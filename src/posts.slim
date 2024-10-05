@@ -1,11 +1,31 @@
 ---
 layout: page
 title: Posts
+paginate:
+  collection: posts
+  per_page: 4
 ---
 
-ul
-  - collections.posts.resources.each do |post|
-    li
-      a href="#{post.relative_url}" = post.data.title
+ul class="space-y-4"
+  - paginator.resources.each do |post|
+    li class="border-b border-gray-200"
+      a href="#{post.relative_url}" class="block py-4 text-black hover:bg-gray-50"
+        div class="flex items-center"
+          time datetime="#{post.date}" class="w-24 text-sm text-gray-500"
+            = post.date.strftime("%Y-%m-%d")
+          span class="flex-grow font-medium"
+            = post.data.title
+
+  - if paginator.total_pages > 1
+    ul class="flex justify-center gap-4 mt-8"
+      - if paginator.previous_page
+        li
+          a href="#{paginator.previous_page_path}" class="px-4 py-2 border border-gray-200 text-black hover:bg-gray-50"
+            | Previous
+      - if paginator.next_page
+        li
+          a href="#{paginator.next_page_path}" class="px-4 py-2 border border-gray-200 text-black hover:bg-gray-50"
+            | Next
+
 
 / If you have a lot of posts, you may want to consider adding [pagination](https://www.bridgetownrb.com/docs/content/pagination)!
