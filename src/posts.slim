@@ -8,10 +8,10 @@ paginate:
 
 ul class="space-y-4"
   - paginator.resources.each do |post|
-    li class="border-b border-gray-200"
-      a href="#{post.relative_url}" class="block py-4 text-black hover:bg-gray-50"
+    li class="border-b border-neutral-700"
+      a href="#{post.relative_url}" class="block py-4 text-neutral-200 hover:bg-neutral-800"
         div class="flex items-center"
-          time datetime="#{post.date}" class="w-24 text-sm text-gray-500"
+          time datetime="#{post.date}" class="w-24 text-sm text-neutral-400"
             = post.date.strftime("%Y-%m-%d")
           span class="flex-grow font-medium"
             = post.data.title
@@ -20,12 +20,11 @@ ul class="space-y-4"
     ul class="flex justify-center gap-4 mt-8"
       - if paginator.previous_page
         li
-          a href="#{paginator.previous_page_path}" class="px-4 py-2 border border-gray-200 text-black hover:bg-gray-50"
+          a href="#{paginator.previous_page_path}" class="px-4 py-2 border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
             | Previous
       - if paginator.next_page
         li
-          a href="#{paginator.next_page_path}" class="px-4 py-2 border border-gray-200 text-black hover:bg-gray-50"
+          a href="#{paginator.next_page_path}" class="px-4 py-2 border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
             | Next
-
 
 / If you have a lot of posts, you may want to consider adding [pagination](https://www.bridgetownrb.com/docs/content/pagination)!
