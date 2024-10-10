@@ -5,9 +5,9 @@ date: 2024-10-05 02:47:16 -0300
 categories: updates
 ---
 
-## Understanding Rails Update Methods
+## Guide to update attributes in rails
 
-If you've ever found yourself Googling or asking ChatGPT about `update`, `update_attribute`, `update_attributes`, or `update_columns` in Rails, you're not alone. Whether it's because you forgot or never really invested time to understand how to use each one, this post will provide a clear and practical explanation of these methods.
+Everytime I have to implement some specific attribute update I search on google about how to use `update`, `update_attribute`, `update_attributes`, or `update_columns`. I know it seens silly, but if you dont really understand how to use each one you are going to face some bad surprises as me.
 
 ## Setting Up Our Example
 
@@ -35,8 +35,6 @@ Let's create our `User`:
 user = User.create(name: "love Rails ")
 user.name # => "Love Rails"
 ```
-
-## Update Methods Explained
 
 ### 1. `update(attributes)`
 
