@@ -38,7 +38,7 @@ user.name # => "Love Rails"
 
 ### 1. `update(attributes)`
 
-This is probably the most common method in our day-to-day work for updating an object.
+This is probably the most common method we use daily in rails projects.
 
 ```ruby
 user.update(name: "") # => false
@@ -67,13 +67,17 @@ user.name # => "Love Rails Again"
 Here's what just happened:
 1. Validations are skipped, allowing to save `name` with an empty string.
 2. Callbacks run, normalizing the name as expected.
-3. The `updated_at` column is also updated with the time of the last update.
+3. The `updated_at` column is also updated with the time of the lastest update.
 
-### 3. `update_columns(attributes)`
+### 3. `update_columns(attributes)` and `update_column(attribute, value)`
 
 ```ruby
 user.update_columns(name: "") # => true
 user.update_columns(name: "hate update columns") # => true
+
+# same idea of update_columns, but accept only 1 attribute
+user.update_column(:name, "hate update columns")
+
 user.name # => "hate update columns"
 ```
 
@@ -83,5 +87,5 @@ user.name # => "hate update columns"
 
 As the documentation describes: "This is the fastest way to update attributes because it goes straight to the database, but take into account that in consequence the regular update procedures are totally bypassed."
 
-While there might be situations where this is acceptable, it often results in bugs due to bypassing important model logic.
-
+While there might be situations where this is acceptable, it often results in bugs due to bypassing important model logic. I personally hate this one because I have seeing too much bugs related to the bad use of this.
+Normally I use only in tests, when i want to set some setup data, without side effects.
